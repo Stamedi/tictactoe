@@ -7,11 +7,17 @@ function App() {
   const [table, setTable] = useState([
     {id:1, value:''},{id:2, value:''},{id:3, value:''},{id:4, value:''},{id:5, value:''},{id:6, value:''},{id:7, value:''},{id:8, value:''},{id:9, value:''},
   ])
+  const 
   // const currentVal = 'X';
   // const table = [
   //   {id:1, value:''},{id:2, value:''},{id:3, value:''},{id:4, value:''},{id:5, value:''},{id:6, value:''},{id:7, value:''},{id:8, value:''},{id:9, value:''},
   // ];
+  const checkGame = () => {
+    table.map((cell) => {
+      if (cell.)
+    })
 
+  }
 
 
   const changeCell = (id) => {
@@ -19,6 +25,7 @@ function App() {
     setCurrentVal(currentVal === 'X' ? 'O' : 'X')
   }
   
+  // [1,2,3] [4,5,6] [7,8,9]
 
   // useEffect(() => {
   //   console.log(table)
