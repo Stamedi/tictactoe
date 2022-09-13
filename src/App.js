@@ -7,6 +7,18 @@ function App() {
   const [table, setTable] = useState([
     '','','','','','','','',''
   ])
+<<<<<<< HEAD
+  const 
+  // const currentVal = 'X';
+  // const table = [
+  //   {id:1, value:''},{id:2, value:''},{id:3, value:''},{id:4, value:''},{id:5, value:''},{id:6, value:''},{id:7, value:''},{id:8, value:''},{id:9, value:''},
+  // ];
+  const checkGame = () => {
+    table.map((cell) => {
+      if (cell.)
+    })
+
+=======
   const [xWin, setXWin] = useState(false)
   const [oWin, setOWin] = useState(false)
   const [finalString, setFinalString] = useState('')
@@ -34,6 +46,7 @@ function App() {
       console.log(gameVals)
       setFinalString()
       // console.log(res)
+>>>>>>> 404fedda68e51b2bdc1d8559ac0820f1bed06473
   }
 
 const resetGame = () => {
@@ -66,6 +79,7 @@ const resetGame = () => {
     // }
   }
   
+  // [1,2,3] [4,5,6] [7,8,9]
 
   useEffect(() => {
     areEqual(gameVals)
