@@ -43,9 +43,24 @@ const resetGame = () => {
   setCurrentVal('X')
 }
 
-  const changeCell = async (currInd) => {
-    await setTable(table.map((cell, index) => index !== currInd ? cell : currentVal))
+  // const changeCell = async (currInd) => {
+  //   await setTable(table.map((cell, index) => index !== currInd ? cell : currentVal))
+  //   setCurrentVal(currentVal === 'X' ? 'O' : 'X')
+  //   // if (gameVals.every((val) => val !== 'X' ) !== []) {
+  //   //   console.log("Game Over")
+  //   // }
+  // }
+
+  const changeCell = (event) => {
+    console.log(event.target)
+    if (event.target.textContent === '') {
+      event.target.textContent = currentVal
+    } else {
+      event.target.textContent.disabled = true
+    }
     setCurrentVal(currentVal === 'X' ? 'O' : 'X')
+
+    // await setTable(table.map((cell, index) => index !== currInd ? cell : currentVal))
     // if (gameVals.every((val) => val !== 'X' ) !== []) {
     //   console.log("Game Over")
     // }
@@ -61,7 +76,7 @@ const resetGame = () => {
     <div className="app-container">
     {xWin === false && oWin === false ?
         <div className="game-container">
-          {table.map((cell, index) => <div onClick={() => changeCell(index)} key={index} className="cell">{cell}</div>)}
+          {table.map((cell, index) => <div onClick={(e) => changeCell(e, index)} key={index} className="cell">{cell}</div>)}
         </div>
     :
     <button onClick={() => resetGame()}>RESTART</button>
