@@ -1,1 +1,1 @@
-WEBSITE LINK - https://tic-tac-toe-mario.netlify.app
+WEBSITE LINK - mario-tictactoe.netlify.app
