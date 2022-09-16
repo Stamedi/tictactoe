@@ -75,7 +75,9 @@ function App() {
 
   useEffect(() => {
     areEqual(gameVals)
-  }, [table, currentVal])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [table, currentVal]) 
+  
 
   return (
     <div className="app-container">
