@@ -1,100 +1,98 @@
 import { useEffect, useState } from 'react';
-import './App.css';
+import './App.scss';
 
 function App() {
-
   const [currentVal, setCurrentVal] = useState('X');
   const [table, setTable] = useState([
     '','','','','','','','',''
   ])
-<<<<<<< HEAD
-  const 
-  // const currentVal = 'X';
-  // const table = [
-  //   {id:1, value:''},{id:2, value:''},{id:3, value:''},{id:4, value:''},{id:5, value:''},{id:6, value:''},{id:7, value:''},{id:8, value:''},{id:9, value:''},
-  // ];
-  const checkGame = () => {
-    table.map((cell) => {
-      if (cell.)
-    })
-
-=======
-  const [xWin, setXWin] = useState(false)
-  const [oWin, setOWin] = useState(false)
   const [finalString, setFinalString] = useState('')
+  const [winner, setWinner] = useState(false)
   const gameVals = [
     [table[0], table[1], table[2]],
-    [table[3], table[4], table[5]]
+    [table[3], table[4], table[5]],
+    [table[6], table[7], table[8]],
+    [table[0], table[3], table[6]],
+    [table[1], table[4], table[7]],
+    [table[2], table[5], table[8]],
+    [table[0], table[4], table[8]],
+    [table[2], table[4], table[6]],
+    
   ]
 
-  const areEqual = (gameVals) => {
-      gameVals.forEach((vals) => {
-        const resX = vals.every((el) => {
+  const areEqual = async (gameVals) => {
+    await gameVals.forEach((vals) => {
+        if (vals.every((el) => {
           if (el === 'X') {
             return true;
           }
-        });
-        const resO = vals.every((el) => {
-          if (el === 'O') {
-            return true;
-          }
-        });
-        console.log(resX)
+          return 0;
+        })) {
+          setFinalString('X Won, Good Game!')
+          setWinner(true)
+        } else if (
+          vals.every((el) => {
+            if (el === 'O') {
+              return true;
+            }
+            return 0;
+          })
+        ) {
+          setFinalString('O Won, Good Game!')
+          setWinner(true)
+        }
       })
-      // setXWin(resX)
-      // setOWin(resO)
-      console.log(gameVals)
-      setFinalString()
-      // console.log(res)
->>>>>>> 404fedda68e51b2bdc1d8559ac0820f1bed06473
+      if (winner === false) {
+        if (
+          table.every((el) => {
+            if (el === 'O' || el === 'X') {
+              return true;
+            }
+            return 0;
+          })
+        ) {
+          setFinalString('Draw!')
+          setWinner(true)
+        }
+      }
   }
 
-const resetGame = () => {
-  setTable(['','','','','','','','',''])
-  setXWin(false)
-  setOWin(false)
-  setCurrentVal('X')
-}
+  const resetGame = () => {
+    setTable(['','','','','','','','',''])
+    setCurrentVal('X')
+    setFinalString('')
+    setWinner(false)
+  }
 
-  // const changeCell = async (currInd) => {
-  //   await setTable(table.map((cell, index) => index !== currInd ? cell : currentVal))
-  //   setCurrentVal(currentVal === 'X' ? 'O' : 'X')
-  //   // if (gameVals.every((val) => val !== 'X' ) !== []) {
-  //   //   console.log("Game Over")
-  //   // }
-  // }
-
-  const changeCell = (event) => {
-    console.log(event.target)
-    if (event.target.textContent === '') {
-      event.target.textContent = currentVal
-    } else {
-      event.target.textContent.disabled = true
+  const changeCell = async (currCell, currInd) => {
+    if (winner === false) {
+      if (currCell === '') {
+        await setTable(table.map((cell, index) => index !== currInd ? cell : currentVal))
+        setCurrentVal(currentVal === 'X' ? 'O' : 'X')
+      } 
     }
-    setCurrentVal(currentVal === 'X' ? 'O' : 'X')
-
-    // await setTable(table.map((cell, index) => index !== currInd ? cell : currentVal))
-    // if (gameVals.every((val) => val !== 'X' ) !== []) {
-    //   console.log("Game Over")
-    // }
   }
-  
-  // [1,2,3] [4,5,6] [7,8,9]
 
   useEffect(() => {
     areEqual(gameVals)
-  }, [table])
-  
-// console.log(table)
+  }, [table, currentVal])
+
   return (
     <div className="app-container">
-    {xWin === false && oWin === false ?
-        <div className="game-container">
-          {table.map((cell, index) => <div onClick={(e) => changeCell(e, index)} key={index} className="cell">{cell}</div>)}
-        </div>
-    :
-    <button onClick={() => resetGame()}>RESTART</button>
-    }    
+    <h1 className='app-title'>
+    <span className='title-one'>Tic</span><span className='title-two'>Tac</span><span className='title-three'>Toe</span></h1>
+      
+      <div className={winner === true ? "result-container" : 'result-container-none'}>
+        <h1 className={finalString.includes('X') ? 'final-string-blue' : 'final-string-pink'}>{finalString}</h1>
+        <button className='reset-btn' onClick={() => resetGame()}>RESTART</button>
+      </div>
+      
+      <div className={winner === true ? 'game-container-won' : 'game-container'} >
+        {table.map((cell, index) => 
+        <div onClick={() => changeCell(cell, index)} key={index} className="cell" id={"id" + index}>
+          {cell === 'X' && <svg height='100%' width='100%' className="cross-container"><line x1="25%" y1="25%" x2="75%" y2="75%" className='line' /><line x1="25%" y1="75%" x2="75%" y2="25%" className='line2' /></svg> } {cell === 'O' && <svg height='100%' width='100%'> <circle cx="50%" cy="50%" r="30%" className='circle'/></svg>}
+        </div>)}
+      </div>
     </div>
   );
 }
