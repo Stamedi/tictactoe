@@ -9,10 +9,6 @@
   --cell: 200px;
   --grid-pos-play: 50px;
   --grid-pos-gg: 180px;
-  // --mark: calc(var(--cell) * 0.9);
-  // @media (max-width: 600px) {
-  //   --cell: calc(var(--cell) * 0.9);
-  // }
   @media (max-width:620px) {
     --grid-pos-gg: 200px;
     --cell: 150px;
@@ -213,21 +209,6 @@ body {
   &:hover {
     cursor: url('https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/60/000000/external-pencil-back-to-school-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png') 0 55, auto;
   }
-  // @media (max-width:620px) {
-  //   height: 150px;
-  //   width: 150px;
-  //   // height: auto;
-  //   // width: auto;
-  //   // transform: translateY(250px);
-  // }
-  // @media (max-width:460px) {
-  //   height: 100px;
-  //   width: 100px;
-  //   // height: auto;
-  //   // width: auto;
-  //   // transform: translateY(250px);
-  // }
-
 }
 
 .game-container,
@@ -273,17 +254,6 @@ body {
     transform: translateY(--grid-pos-play);
   }
 }
-
-// @keyframes bounce-left {
-//   0% {
-//     opacity: .2;
-//     transform: translateY(0px);
-//   }
-//   100% {
-//     opacity: 1;
-//     transform: translateY(-180px);
-//   }
-// }
 
 .result-container {
   position:absolute;
