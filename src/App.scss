@@ -175,7 +175,7 @@ body {
   animation-name: res-down;
   animation-duration: 0.7s;
   opacity: 0;
-  animation-delay: 0.3s;
+  animation-delay: 1s;
   animation-fill-mode: forwards;
 }
 
@@ -220,7 +220,7 @@ body {
   transform: translateY(50px);
   animation-name: go-up;
   animation-duration: 0.6s;
-  
+  animation-delay: 1s;
   &:hover {
     cursor: url('https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/60/000000/external-pencil-back-to-school-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png') 0 55, auto;
   }
